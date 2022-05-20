@@ -1,15 +1,15 @@
 using AmpApi.API.Data;
+using AmpApi.API.Domain;
+using AmpApi.API.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using AmpApi.API.Domain;
-using AmpApi.API.Repository;
+using System.Text;
 
 namespace AmpApi.API
 {
@@ -25,11 +25,15 @@ namespace AmpApi.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("SecretKey"));
+
+            // configuracion base datos
             var cnn = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options =>
                  options.UseSqlServer(cnn));
 
+            // configuracion validacion por token
+
+            var key = Encoding.ASCII.GetBytes(Configuration.GetValue<string>("SecretKey"));
             services.AddAuthentication(options =>
                     {
                         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,6 +50,11 @@ namespace AmpApi.API
                         };
                     }
                     );
+
+            // entrega de instancias
+
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ISuscripcionRepository, SuscripcionRepository>();
 
 
             services.AddControllers();
