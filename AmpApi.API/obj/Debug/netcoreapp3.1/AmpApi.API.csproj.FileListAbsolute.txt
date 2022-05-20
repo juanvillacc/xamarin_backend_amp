@@ -1,0 +1,6 @@
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.csproj.AssemblyReference.cache
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.AssemblyInfoInputs.cache
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.AssemblyInfo.cs
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.csproj.CoreCompileInputs.cache
+C:\temp\AmpApi\AmpApi.API\obj\Debug\netcoreapp3.1\AmpApi.API.MvcApplicationPartsAssemblyInfo.cache
