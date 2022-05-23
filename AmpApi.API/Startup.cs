@@ -55,7 +55,7 @@ namespace AmpApi.API
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ISuscripcionRepository, SuscripcionRepository>();
-
+            services.AddTransient<ICiudadRepository, CiudadRepository>();
 
             services.AddControllers();
 

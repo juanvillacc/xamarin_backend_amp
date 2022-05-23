@@ -8,5 +8,13 @@ namespace AmpApi.API.Domain
     {
         IEnumerable<Suscripcion> ObtenerSuscripciones();
         Task IngresarSuscripcion(Suscripcion dato);
+
+        void ActualizarSuscripcion(Suscripcion dato);
+
+        Task EliminarSuscripcion(int id);
+        Task<IEnumerable<Ciudad>> ObtenerCiudades();
+        Task IngresarCiudad(Ciudad dato);
+        void ActualizarCiudad(Ciudad dato);
+        Task EliminarCiudad(int id);
     }
 }

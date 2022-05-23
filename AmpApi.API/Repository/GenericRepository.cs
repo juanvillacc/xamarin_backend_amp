@@ -20,8 +20,9 @@ namespace AmpApi.API.Repository
             _contexto.Set<T>().Update(entidad);
         }
 
-        public void Borrar(T entidad)
+        public async Task Eliminar(int id)
         {
+            T entidad = await _contexto.Set<T>().FindAsync(id);
             _contexto.Set<T>().Remove(entidad);
         }
 

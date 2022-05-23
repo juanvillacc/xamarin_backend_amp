@@ -7,7 +7,7 @@ namespace AmpApi.API.Domain
         Task<T> Obtener(int id);
         Task<IEnumerable<T>> ObtenerTodos();
         Task Ingresar(T entidad);
-        void Borrar(T entidad);
+        Task Eliminar(int id);
         void Actualizar(T entidad);
     }
 }

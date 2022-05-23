@@ -14,5 +14,6 @@ namespace AmpApi.API.Data
             
         }
         public DbSet<Suscripcion> Suscripciones { get; set; }
+        public DbSet<Ciudad> Ciudades { get; set; }
     }
 }

@@ -11,9 +11,14 @@ namespace AmpApi.API.Repository
     {
         private readonly ISuscripcionRepository _repoSuscripciones;   
         private readonly ApplicationDbContext _contexto;
-        public UnitOfWork(ApplicationDbContext contexto ,ISuscripcionRepository repoSuscripciones) {
+        private readonly ICiudadRepository _repoCiudades;
+        public UnitOfWork(ApplicationDbContext contexto ,
+            ISuscripcionRepository repoSuscripciones,
+            ICiudadRepository repoCiudades
+            ) {
             _contexto = contexto;
             _repoSuscripciones = repoSuscripciones;
+            _repoCiudades = repoCiudades;
         }
 
         public int Commit()
@@ -32,10 +37,45 @@ namespace AmpApi.API.Repository
             Commit();
         }
 
+        public void ActualizarSuscripcion(Suscripcion dato)
+        {
+            _repoSuscripciones.ActualizarSuscripcion(dato);
+            Commit();
+        }
+
         public IEnumerable<Suscripcion> ObtenerSuscripciones()
         {
             return _repoSuscripciones.ObtenerActivas();
           
-        } 
+        }
+
+        public async Task EliminarSuscripcion(int id)
+        {
+            await _repoSuscripciones.EliminarSuscripcion(id);
+            Commit();
+        }
+
+        public async Task<IEnumerable<Ciudad>> ObtenerCiudades()
+        {
+            return await _repoCiudades.Obtener();
+        }
+
+        public async Task IngresarCiudad(Ciudad dato)
+        {
+            await _repoCiudades.IngresarCiudad(dato);
+            Commit();
+        }
+
+        public void ActualizarCiudad(Ciudad dato)
+        {
+            _repoCiudades.ActualizarCiudad(dato);
+            Commit();
+        }
+
+        public async Task EliminarCiudad(int id)
+        {
+            await _repoCiudades.EliminarCiudad(id);
+            Commit();
+        }
     }
 }

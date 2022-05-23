@@ -8,41 +8,41 @@ namespace AmpApi.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SuscripcionController : ControllerBase
+    public class CiudadController : ControllerBase
     {
         private readonly IUnitOfWork _unit;
 
-        public SuscripcionController(IUnitOfWork unit)
+        public CiudadController(IUnitOfWork unit)
         {
             _unit = unit;
         }
 
         [HttpGet]
-        [Route("ObtenerSuscripciones")]
-        public  IEnumerable<Suscripcion> ObtenerSuscripciones()
+        [Route("ObtenerCiudades")]
+        public async Task<IEnumerable<Ciudad>> ObtenerCiudades()
         {
-            return  _unit.ObtenerSuscripciones();
+            return await _unit.ObtenerCiudades();
         }
 
         [HttpPost]
         [Route("Ingresar")]
-        public Task Ingresar(Suscripcion dato)
+        public Task Ingresar(Ciudad dato)
         {
-            return _unit.IngresarSuscripcion(dato);
+            return _unit.IngresarCiudad(dato);
         }
 
         [HttpPut]
         [Route("Actualizar")]
-        public void Actualizar(Suscripcion dato)
+        public void Actualizar(Ciudad dato)
         {
-             _unit.ActualizarSuscripcion(dato);
+            _unit.ActualizarCiudad(dato);
         }
 
         [HttpDelete]
         [Route("Eliminar")]
         public Task Eliminar(int id)
         {
-           return  _unit.EliminarSuscripcion(id);
+            return _unit.EliminarCiudad(id);
         }
     }
 }

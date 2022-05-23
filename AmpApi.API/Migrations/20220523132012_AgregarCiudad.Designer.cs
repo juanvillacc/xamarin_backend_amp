@@ -3,6 +3,7 @@ using AmpApi.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AmpApi.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220523132012_AgregarCiudad")]
+    partial class AgregarCiudad
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,22 +22,6 @@ namespace AmpApi.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("AmpApi.API.Models.Ciudad", b =>
-                {
-                    b.Property<int>("id_ciudad")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id_ciudad"), 1L, 1);
-
-                    b.Property<string>("nombres")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id_ciudad");
-
-                    b.ToTable("Ciudades");
-                });
 
             modelBuilder.Entity("AmpApi.API.Models.Suscripcion", b =>
                 {

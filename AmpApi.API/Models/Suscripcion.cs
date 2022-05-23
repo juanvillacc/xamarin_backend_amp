@@ -12,5 +12,7 @@ namespace AmpApi.API.Models
         public bool estado { get; set; }
 
         public string nombres { get; set; }
+
+        public int id_ciudad { get; set; }
     }
 }

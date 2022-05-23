@@ -23,5 +23,19 @@ namespace AmpApi.API.Repository
         {
             await Ingresar(entidad);
         }
+        public void ActualizarSuscripcion(Suscripcion entidad)
+        {
+            Actualizar(entidad);
+        }
+
+        public async Task EliminarSuscripcion(int id)
+        {
+           await Eliminar(id);
+        }
+
+        public async Task<IEnumerable<Suscripcion>> Obtener()
+        {
+            return await ObtenerTodos();
+        }
     }
 }
