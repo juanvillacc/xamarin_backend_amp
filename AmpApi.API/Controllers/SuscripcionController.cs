@@ -1,11 +1,13 @@
 ﻿using AmpApi.API.Domain;
 using AmpApi.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AmpApi.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class SuscripcionController : ControllerBase
