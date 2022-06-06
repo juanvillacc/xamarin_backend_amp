@@ -43,10 +43,9 @@ namespace AmpApi.API.Repository
             Commit();
         }
 
-        public IEnumerable<Suscripcion> ObtenerSuscripciones()
+        public async Task<IEnumerable<Suscripcion>> ObtenerSuscripcionesAsync()
         {
-            return _repoSuscripciones.ObtenerActivas();
-          
+            return await _repoSuscripciones.Obtener();
         }
 
         public async Task EliminarSuscripcion(int id)

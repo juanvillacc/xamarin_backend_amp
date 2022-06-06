@@ -6,7 +6,7 @@ namespace AmpApi.API.Domain
 {
     public interface IUnitOfWork
     {
-        IEnumerable<Suscripcion> ObtenerSuscripciones();
+        Task<IEnumerable<Suscripcion>> ObtenerSuscripcionesAsync();
         Task IngresarSuscripcion(Suscripcion dato);
 
         void ActualizarSuscripcion(Suscripcion dato);

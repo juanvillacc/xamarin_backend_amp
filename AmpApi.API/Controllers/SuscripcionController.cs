@@ -14,16 +14,16 @@ namespace AmpApi.API.Controllers
     {
         private readonly IUnitOfWork _unit;
 
-        public SuscripcionController(IUnitOfWork unit)
+        public SuscripcionController(IUnitOfWork unit)                                
         {
             _unit = unit;
         }
 
         [HttpGet]
         [Route("ObtenerSuscripciones")]
-        public  IEnumerable<Suscripcion> ObtenerSuscripciones()
+        public async Task<IEnumerable<Suscripcion>> ObtenerSuscripcionesAsync()
         {
-            return  _unit.ObtenerSuscripciones();
+            return  await _unit.ObtenerSuscripcionesAsync();
         }
 
         [HttpPost]
